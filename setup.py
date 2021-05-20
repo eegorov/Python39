@@ -2142,7 +2142,7 @@ class PyBuildExt(build_ext):
                                libraries=['m']))
 
         ffi_inc = sysconfig.get_config_var("LIBFFI_INCLUDEDIR")
-        ffi_lib = None
+        ffi_lib = 'ffi'
 
         ffi_inc_dirs = self.inc_dirs.copy()
         if MACOS:

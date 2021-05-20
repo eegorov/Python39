@@ -3105,7 +3105,7 @@ else
 fi
 
 if test "$with_system_ffi" = "yes" && test -n "$PKG_CONFIG"; then
-    LIBFFI_INCLUDEDIR="`"$PKG_CONFIG" libffi --cflags-only-I 2>/dev/null | sed -e 's/^-I//;s/ *$//'`"
+    LIBFFI_INCLUDEDIR="`cygpath -u $(pkg-config --cflags-only-I libffi | sed -e 's:-I::')`"
 else
     LIBFFI_INCLUDEDIR=""
 fi

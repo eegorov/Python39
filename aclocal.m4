@@ -151,7 +151,7 @@ AC_DEFUN([AX_CHECK_OPENSSL], [
             # then use that information and don't search ssldirs
             AC_CHECK_TOOL([PKG_CONFIG], [pkg-config])
             if test x"$PKG_CONFIG" != x""; then
-                OPENSSL_LDFLAGS=`$PKG_CONFIG openssl --libs-only-L 2>/dev/null`
+                OPENSSL_LDFLAGS=-L`cygpath -u $(pkg-config openssl --libs-only-L | sed -e 's:-L::')`
                 if test $? = 0; then
                     OPENSSL_LIBS=`$PKG_CONFIG openssl --libs-only-l 2>/dev/null`
                     OPENSSL_INCLUDES=`$PKG_CONFIG openssl --cflags-only-I 2>/dev/null`
